@@ -1,0 +1,10 @@
+body{
+background-image: url("./src/assets/img/stadium_background.webp");
+background-repeat: no-repeat;
+
+}
+section button{
+
+    background-color: black;
+    border: 1px black ;
+}
