@@ -1,8 +1,18 @@
 const btnAdd = document.getElementById("add")
 const bonTouch =document.querySelector(".bontouch")
+let players = JSON.parse(localStorage.getItem("players")) || [];
 
 let plyr=0
+getTask_count(players);
 
+function getTask_count(players) {
+  if (!(players.length === 0)) {
+    count = players[players.length - 1].count;
+    players.forEach((player) => {
+      addHtml(player);
+    });
+  }
+}
 
  function addPlayer(){
     const player =
@@ -20,7 +30,8 @@ let plyr=0
       "defending": document.getElementById("defending").value,
       "physical": document.getElementById("physical").value
     }
-    
+    players.push(player);
+    localStorage.setItem("players", JSON.stringify(players));
     return player;
  }
 

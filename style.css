@@ -12,10 +12,10 @@ section button {
     background-position: center;
     width: 100%;
     grid-template:
-    ".. LW .. ST .. RW .."
-    ".. CM1 .. CM2 .. CM3 .."
-    "LB .. CB1 .. CB2 .. RB"
-    ".. .. .. GK .. .. ..";    
+    ".. .. LW .. ST .. RW .. .."
+    ".. .. CM1 .. CM2 .. CM3 .. .."
+    ".. LB .. CB1 .. CB2 .. RB .."
+    ".. .. .. .. GK .. .. .. ..";    
 }
 
 .card{
