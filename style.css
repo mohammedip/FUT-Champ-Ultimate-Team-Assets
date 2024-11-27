@@ -12,11 +12,12 @@ section button {
     background-position: center;
     width: 100%;
     grid-template:
-    ".. .. ST1 .. ST2 .. .."
-    "LM .. CM1 .. CM2 .. RM "
+    ".. LW .. ST .. RW .."
+    ".. CM1 .. CM2 .. CM3 .."
     "LB .. CB1 .. CB2 .. RB"
     ".. .. .. GK .. .. ..";    
 }
+
 .card{
      background-image: url("./src/assets/img/badge_gold.webp");
     background-repeat: no-repeat;
@@ -24,15 +25,17 @@ section button {
     height: 16rem;
     max-width: 12rem;
     min-width: 12rem;
+    
 }
-.ST1{
-    grid-area: ST1;
+
+.ST{
+    grid-area: ST;
 }
-.ST2{
-    grid-area: ST2;
+.LW{
+    grid-area: LW;
 }
-.LM{
-    grid-area: LM;
+.RW{
+    grid-area: RW;
 }
 .CM1{
     grid-area:CM1 ;
@@ -40,8 +43,8 @@ section button {
 .CM2{
     grid-area: CM2;
 }
-.RM{
-    grid-area: RM;
+.CM3{
+    grid-area: CM3;
 }
 .LB{
     grid-area: LB;
@@ -59,3 +62,5 @@ section button {
 .GK{
     grid-area:GK ;
 }
+
+

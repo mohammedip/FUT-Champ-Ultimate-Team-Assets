@@ -12,292 +12,277 @@
 
     <section class="relative grid gap-6 mb-6 ">
         <form
-        class=" relative grid grid-cols-2 gap-6 p-4 rounded-lg bg-slate-500 lg:grid-cols-4 "
+        class="relative grid grid-cols-2 gap-6 p-4 rounded-lg bg-black lg:grid-cols-4"
       >
         <div>
           <label
             for="name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Name</label
-          >
+            class="block mb-2 text-sm font-medium text-white"
+          >Name</label>
           <input
             type="text"
             id="name"
-            class="bg-gray-50 border border-white text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-white dark:placeholder-gray-400 dark:text-white dark: dark:focus:border-blue-500"
+            class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="Lionel Messi"
             required
           />
         </div>
-
+      
         <div>
-          <label
-            for="profile-photo"
-            class="flex items-center justify-center bg-gray-700 mt-2 w-32 h-28 border border-white rounded-lg overflow-hidden cursor-pointer"
+            <label
+            for="playerPhotoSelect"
+            class="block mb-2 text-sm font-medium text-white"
+          >players Profil</label>
+            <select
+            id="playerPhotoSelect"
+            class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
           >
-            <img
-              src=""
-              alt=""
-              class="object-cover h-full hidden"
-              id="profileImage"
-            />
-            <span id="Text" class="text-white">Profil</span>
-          </label>
-          <input
-            type="file"
-            id="profile-photo"
-            name="profile-photo"
-            class="hidden"
-            accept="image/*"
-            onchange="displayImg(event)"
-          />
+            <option value="" disabled selected hidden>Choose the player profil</option>
+            <option value="https://cdn.sofifa.net/players/158/023/25_120.png">Lionel Messi</option>
+            <option value="https://cdn.sofifa.net/players/020/801/25_120.png">Cristiano Ronaldo</option>
+            <option value="https://cdn.sofifa.net/players/192/985/25_120.png">Kevin De Bruyne</option>
+            <option value="https://cdn.sofifa.net/players/231/747/25_120.png">Kylian Mbappé</option>
+            <option value="https://cdn.sofifa.net/players/203/376/25_120.png">Virgil van Dijk</option>
+            <option value="https://cdn.sofifa.net/players/205/452/25_120.png">Antonio Rudiger</option>
+            <option value="https://cdn.sofifa.net/players/190/871/25_120.png">Neymar Jr</option>
+            <option value="https://cdn.sofifa.net/players/192/985/25_120.png">Mohamed Salah</option>
+            <option value="https://cdn.sofifa.net/players/212/622/25_120.png">Joshua Kimmich</option>
+            <option value="https://cdn.sofifa.net/players/200/389/25_120.png">Jan Oblak</option>
+            <option value="https://cdn.sofifa.net/players/177/003/25_120.png">Luka Modrić</option>
+            <option value="https://cdn.sofifa.net/players/238/794/25_120.png">Vinicius Junior</option>
+            <option value="https://cdn.sofifa.net/players/231/410/25_120.png">Brahim Diáz</option>
+            <option value="https://cdn.sofifa.net/players/165/153/25_120.png">Karim Benzema</option>
+            <option value="https://cdn.sofifa.net/players/239/085/25_120.png">Erling Haaland</option>
+            <option value="https://cdn.sofifa.net/players/215/914/25_120.png">N'Golo Kanté</option>
+            <option value="https://cdn.sofifa.net/players/234/396/25_120.png">Alphonso Davies</option>
+            <option value="https://cdn.sofifa.net/players/209/981/25_120.png">Yassine Bounou</option>
+            <option value="https://cdn.sofifa.net/players/212/198/25_120.png">Bruno Fernandes</option>
+            <option value="https://cdn.sofifa.net/players/233/049/25_120.png">Jadon Sancho</option>
+            <option value="https://cdn.sofifa.net/players/231/281/25_120.png">Trent Alexander-Arnold</option>
+            <option value="https://cdn.sofifa.net/players/235/212/25_120.png">Achraf Hakimi</option>
+            <option value="https://cdn.sofifa.net/players/235/410/25_120.png">Youssef En-Nesyri</option>
+            <option value="https://cdn.sofifa.net/players/236/401/25_120.png">Noussair Mazraoui</option>
+            <option value="https://cdn.sofifa.net/players/259/480/25_120.png">Ismael Saibari</option>
+            <option value="https://cdn.sofifa.net/players/230/621/25_120.png">Gianluigi Donnarumma</option>
+          </select>
+          
         </div>
+      
+        <div >
+            <label
+            for="flagSelect"
+            class="block mb-2 text-sm font-medium text-white"
+          >Nationality</label>
+          <select
+          id="flagSelect"
+          class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
+        >
+          <option value="" disabled selected hidden>Choose a nationality</option>
 
+          <option value="https://cdn.sofifa.net/flags/es.png">Spain</option>
+          <option value="https://cdn.sofifa.net/flags/fr.png">France</option>
+          <option value="https://cdn.sofifa.net/flags/de.png">Germany</option>
+          <option value="https://cdn.sofifa.net/flags/gb-eng.png">England</option>
+          <option value="https://cdn.sofifa.net/flags/ar.png">Argentina</option>
+          <option value="https://cdn.sofifa.net/flags/br.png">Brazil</option>
+          <option value="https://cdn.sofifa.net/flags/it.png">Italy</option>
+          <option value="https://cdn.sofifa.net/flags/pt.png">Portugal</option>
+          <option value="https://cdn.sofifa.net/flags/ma.png">Morocco</option>
+          <option value="https://cdn.sofifa.net/flags/nl.png">Netherlands</option>
+          <option value="https://cdn.sofifa.net/flags/sa.png">Saudi Arabia</option>
+          <option value="https://cdn.sofifa.net/flags/us.png">United States</option>
+          <option value="https://cdn.sofifa.net/flags/tr.png">Turkey</option>
+          <option value="https://cdn.sofifa.net/flags/eg.png">Egypt</option>
+          <option value="https://cdn.sofifa.net/flags/mx.png">Mexico</option>
+        </select>
+        
+          
+        </div>
+      
         <div>
-          <label
-            for="nationality"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Nationality</label
-          >
-          <input
-            type="text"
-            id="nationality"
-            class="bg-gray-50 border border-white text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-white dark:placeholder-gray-400 dark:text-white dark: dark:focus:border-blue-500"
-            placeholder="Lionel Messi"
-            required
-          />
-        </div>
+            <label
+            for="clubSelect"
+            class="block mb-2 text-sm font-medium text-white"
+          >Club</label>
+          <select
+          id="clubSelect"
+          class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
+        >
+          <option value="" disabled selected hidden>Choose a club</option>
 
-        <div class="flex">
-          <label
-            for="flag"
-            class="flex items-center justify-center bg-gray-700 mt-2 w-32 h-28 border border-white rounded-lg overflow-hidden cursor-pointer"
-          >
-            <img
-              src=""
-              alt=""
-              class="object-cover h-full hidden"
-              id="profileImage"
-            />
-            <span id="Text" class="text-white">Flag</span>
-          </label>
-          <input
-            type="file"
-            id="flag"
-            name="flag"
-            class="hidden"
-            accept="image/*"
-            onchange="displayImg(event)"
-          />
+          <option value="https://cdn.sofifa.net/teams/241/120.png">Paris Saint-Germain</option>
+          <option value="https://cdn.sofifa.net/teams/243/120.png">Manchester City</option>
+          <option value="https://cdn.sofifa.net/teams/10/120.png">Real Madrid</option>
+          <option value="https://cdn.sofifa.net/teams/11/120.png">FC Barcelona</option>
+          <option value="https://cdn.sofifa.net/teams/13/120.png">Liverpool</option>
+          <option value="https://cdn.sofifa.net/teams/21/120.png">Chelsea</option>
+          <option value="https://cdn.sofifa.net/teams/18/120.png">Manchester United</option>
+          <option value="https://cdn.sofifa.net/teams/175/120.png">Al-Nassr</option>
+          <option value="https://cdn.sofifa.net/teams/27/120.png">Bayern Munich</option>
+          <option value="https://cdn.sofifa.net/teams/1/120.png">Juventus</option>
+          <option value="https://cdn.sofifa.net/teams/697/120.png">Inter Miami</option>
+          <option value="https://cdn.sofifa.net/teams/112195/120.png">Al-Hilal</option>
+          <option value="https://cdn.sofifa.net/teams/240/120.png">Atletico Madrid</option>
+          <option value="https://cdn.sofifa.net/teams/112198/120.png">Al-Ittihad</option>
+          <option value="https://cdn.sofifa.net/teams/326/120.png">Fenerbahçe</option>
+          <option value="https://cdn.sofifa.net/teams/247/120.png">PSV</option>
+        </select>
+        
+          
         </div>
-
-        <div>
-          <label
-            for="club"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Club</label
-          >
-          <input
-            type="text"
-            id="club"
-            class="bg-gray-50 border border-white text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-white dark:placeholder-gray-400 dark:text-white dark: dark:focus:border-blue-500"
-            placeholder="Paris Saint-Germain"
-            required
-          />
-        </div>
-
-        <div>
-          <label
-            for="club"
-            class="flex items-center justify-center bg-gray-700 mt-2 w-32 h-28 border border-white rounded-lg overflow-hidden cursor-pointer"
-          >
-            <img
-              src=""
-              alt=""
-              class="object-cover h-full hidden"
-              id="profileImage"
-            />
-            <span id="Text" class="text-white">Club Logo</span>
-          </label>
-          <input
-            type="file"
-            id="club"
-            name="club"
-            class="hidden"
-            accept="image/*"
-            onchange="displayImg(event)"
-          />
-        </div>
-
+      
         <div>
           <label
             for="Position"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Position</label
-          >
+            class="block mb-2 text-sm font-medium text-white"
+          >Position</label>
           <select
             id="Position"
-            class="bg-gray-50 border border-white text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-white dark:placeholder-gray-400 dark:text-white dark: dark:focus:border-blue-500"
+            class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
           >
             <option value="" disabled selected hidden>
               Choose the position
             </option>
             <option value="RW">Right Winger</option>
             <option value="ST">Striker</option>
-            <option value="CM">Central Midfield</option>
             <option value="CB">Center Back</option>
             <option value="LW">Left Winger</option>
             <option value="GK">Goalkeeper</option>
-            <option value="CDM">Central Defensive Midfielder</option>
+            <option value="CM">Central Defensive Midfielder</option>
             <option value="LB">Left Back</option>
             <option value="RB">Right Back</option>
           </select>
         </div>
-
+      
         <div>
           <label
             for="rating"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Rating</label
-          >
+            class="block mb-2 text-sm font-medium text-white"
+          >Rating</label>
           <input
             type="number"
             id="rating"
-            class="bg-gray-50 border border-white text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-white dark:placeholder-gray-400 dark:text-white dark: dark:focus:border-blue-500"
+            class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="94"
             required
           />
         </div>
-
+      
         <div>
           <label
             for="pace"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Pace</label
-          >
+            class="block mb-2 text-sm font-medium text-white"
+          >Pace</label>
           <input
             type="number"
             id="pace"
-            class="bg-gray-50 border border-white text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-white dark:placeholder-gray-400 dark:text-white dark: dark:focus:border-blue-500"
+            class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="88"
             required
           />
         </div>
-
+      
         <div>
           <label
             for="shooting"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Shooting</label
-          >
+            class="block mb-2 text-sm font-medium text-white"
+          >Shooting</label>
           <input
             type="number"
             id="shooting"
-            class="bg-gray-50 border border-white text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-white dark:placeholder-gray-400 dark:text-white dark: dark:focus:border-blue-500"
+            class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="92"
             required
           />
         </div>
-
+      
         <div>
           <label
             for="passing"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Passing</label
-          >
+            class="block mb-2 text-sm font-medium text-white"
+          >Passing</label>
           <input
             type="number"
             id="passing"
-            class="bg-gray-50 border border-white text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-white dark:placeholder-gray-400 dark:text-white dark: dark:focus:border-blue-500"
+            class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="91"
             required
           />
         </div>
-
+      
         <div>
           <label
             for="dribbling"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Dribbling</label
-          >
+            class="block mb-2 text-sm font-medium text-white"
+          >Dribbling</label>
           <input
             type="number"
             id="dribbling"
-            class="bg-gray-50 border border-white text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-white dark:placeholder-gray-400 dark:text-white dark: dark:focus:border-blue-500"
+            class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="96"
             required
           />
         </div>
-
+      
         <div>
           <label
             for="defending"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Defending</label
-          >
+            class="block mb-2 text-sm font-medium text-white"
+          >Defending</label>
           <input
             type="number"
             id="defending"
-            class="bg-gray-50 border border-white text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-white dark:placeholder-gray-400 dark:text-white dark: dark:focus:border-blue-500"
+            class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="34"
             required
           />
         </div>
-
+      
         <div>
           <label
             for="physical"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Physical</label
-          >
+            class="block mb-2 text-sm font-medium text-white"
+          >Physical</label>
           <input
             type="number"
             id="physical"
-            class="bg-gray-50 border border-white text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-white dark:placeholder-gray-400 dark:text-white dark: dark:focus:border-blue-500"
+            class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="65"
             required
           />
         </div>
-        <div>
+      
+        <div >
           <button
-          id="add"
-            class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-4 px-8 mt-4 rounded focus:outline-none focus:shadow-outline"
+            id="add"
+            class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-4 px-8 mt-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="button"
           >
             Add player
           </button>
         </div>
       </form>
+      
+      
         <div class="grid stadium grid-cols-7 grid-rows-4 items-center place-items-center bg-cover h-[1100px] ease-out duration-1000 ">         
                
-                        <div class="card ST1 grid items-center place-items-center"></div>
-                        <div class="card ST2"></div>
-                        <div class="card LM lg:ml-40"></div>
+                        <div class="card RW "></div>
+                        <div class="card ST"></div>
+                        <div class="card LW "></div>
                         <div class="card CM1"></div>
                         <div class="card CM2"></div>
-                        <div class="card RM lg:mr-40"></div>
-                        <div class="card LB lg:ml-32"></div>
+                        <div class="card CM3 "></div>
+                        <div class="card LB "></div>
                         <div class="card CB1"></div>
                         <div class="card CB2"></div>
-                        <div class="card RB lg:mr-32"></div>
+                        <div class="card RB "></div>
                         <div class="card GK"></div>
                          
         </div>
 
         <div
-          class="relative grid grid-cols-4 gap-x-6 md:grid-cols-6 md:gap-x-6"
-        >
-        <div class="card chgm1 p-10"></div>
-        <div class="card chgm2"></div>
-        <div class="card chgm3"></div>
-        <div class="card chgm4"></div>
-        <div class="card chgm5"></div>
-        <div class="card chgm6"></div>
-        <div class="card chgm7"></div>
-        <div class="card chgm8"></div>
-        <div class="card chgm9"></div>
-        <div class="card chgm10"></div>
-        <div class="card chgm11"></div>
-        <div class="card chgm12"></div>
+          class="bontouch relative grid grid-cols-3 gap-2 place-items-center lg:grid-cols-6 lg:gap-x-6">
+ 
         </div>
 
     </section>
