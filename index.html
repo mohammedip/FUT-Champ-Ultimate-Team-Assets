@@ -24,8 +24,10 @@
             id="name"
             class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="Lionel Messi"
-            required
+              
           />
+          <p id="nameError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid name.</p>
+
         </div>
       
         <div>
@@ -164,8 +166,10 @@
             id="rating"
             class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="94"
-            required
+              
           />
+          <p id="ratingError" class="text-red-500 text-xs mt-1 hidden">Please enter a rating between 10 ~ 99.</p>
+
         </div>
       
         <div>
@@ -178,8 +182,9 @@
             id="pace"
             class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="88"
-            required
+              
           />
+          <p id="paceError" class="text-red-500 text-xs mt-1 hidden">Please enter a pace between 10 ~ 99.</p>
         </div>
       
         <div>
@@ -192,8 +197,9 @@
             id="shooting"
             class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="92"
-            required
+              
           />
+          <p id="shootingError" class="text-red-500 text-xs mt-1 hidden">Please enter a shooting between 10 ~ 99.</p>
         </div>
       
         <div>
@@ -206,8 +212,9 @@
             id="passing"
             class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="91"
-            required
+              
           />
+          <p id="passingError" class="text-red-500 text-xs mt-1 hidden">Please enter a passing between 10 ~ 99.</p>
         </div>
       
         <div>
@@ -220,8 +227,9 @@
             id="dribbling"
             class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="96"
-            required
+              
           />
+          <p id="dribblingError" class="text-red-500 text-xs mt-1 hidden">Please enter a dribbling between 10 ~ 99.</p>
         </div>
       
         <div>
@@ -234,8 +242,9 @@
             id="defending"
             class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="34"
-            required
+              
           />
+          <p id="defendingError" class="text-red-500 text-xs mt-1 hidden">Please enter a defending between 10 ~ 99.</p>
         </div>
       
         <div>
@@ -248,8 +257,9 @@
             id="physical"
             class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
             placeholder="65"
-            required
+              
           />
+          <p id="physicalError" class="text-red-500 text-xs mt-1 hidden">Please enter a physical between 10 ~ 99.</p>
         </div>
       
         <div >
@@ -262,27 +272,764 @@
           </button>
         </div>
       </form>
-      
-      
-        <div class="grid stadium grid-cols-9 grid-rows-4 items-center place-items-center bg-cover h-[1100px] ease-out duration-1000 ">         
+      <div class="relative flex justify-around ">
+        <select title="formaselect" id="formaselect" class="p-6 text-lg rounded-lg bg-black text-white transition duration-1000 ease-in-out">
+          <option  disabled selected hidden>Choose a forma</option>
+          <option value="4-4-2">4-4-2</option>
+          <option value="4-3-3">4-3-3</option>
+
+        </select>
+      </div>
+        <div  class="rel grid stadium1 grid-cols-9 grid-rows-4 items-center place-items-center bg-cover h-[1100px]  ">         
                
-                        <div class="card RW "></div>
-                        <div class="card ST"></div>
-                        <div class="card LW "></div>
-                        <div class="card CM1"></div>
-                        <div class="card CM2"></div>
-                        <div class="card CM3 "></div>
-                        <div class="card LB "></div>
-                        <div class="card CB1"></div>
-                        <div class="card CB2"></div>
-                        <div class="card RB "></div>
-                        <div class="card GK"></div>
+                        <div id="RW" class="card card11 RW "></div>
+                        <div id="ST" class="card card10 ST"></div>
+                        <div id="LW" class="card card9 LW "></div>
+                        <div id="CM1" class="card card8 CM1"></div>
+                        <div id="CM2" class="card card7 CM2"></div>
+                        <div id="CM3" class="card card6 CM3 "></div>
+                        <div id="LB" class="card card5 LB "></div>
+                        <div id="CB1" class="card card4 CB1"></div>
+                        <div id="CB2" class="card card3 CB2"></div>
+                        <div id="RB" class="card card2 RB "></div>
+                        <div id="GK" class="card card1 GK"></div>
                          
         </div>
 
-        <div
-          class="bontouch relative grid grid-cols-3 gap-2 place-items-center lg:grid-cols-6 lg:gap-x-6">
- 
+        <div class="bontouch relative grid grid-cols-3 gap-2 place-items-center lg:grid-cols-6 lg:gap-x-6">
+          
+          <div class="card hidden chgm1 p-10 relative grid place-items-center ">
+            <div
+             class="flex text-center flex-col  absolute top-11 left-6"
+           >
+             <span class="rating font-bold text-[25px]"></span>
+             <span class="position font-medium"></span>
+           </div>
+           <img
+             src=""
+             alt=""
+             class="photo absolute top-12 left-8 "
+           /> 
+           <div
+             class="name absolute bottom-16  font-semibold player-name-card "
+           >
+           
+           </div>
+           <div
+             class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
+           >
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAC</span>
+               <span class="pace text-[12px]"></span>
+             </div>
+             <div class="flex flex-col text-center">
+               <span class="text-[10px]">SHO</span>
+               <span class="shooting text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAS</span>
+               <span class="passing text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DRI</span>
+               <span class="dribbling text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DEF</span>
+               <span class="defending text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PHY</span>
+               <span class="physical text-[12px]"></span>
+             </div>
+         </div>
+         <div
+             class=" flex flex-row justify-self-center gap-2 absolute bottom-4 left-16 player-name-card font-semibold "
+           > 
+           <img
+             src=""
+             alt=""
+             class="logo h-5 w-7 "
+           />
+           <img
+             src=""
+             alt=""
+             class="flag h-4 w-6 "
+           /> 
+             
+             </div>
+          </div>
+          <div class="card hidden chgm2 p-10 relative grid place-items-center">
+            <div
+             class="flex text-center flex-col  absolute top-11 left-6"
+           >
+             <span class="rating font-bold text-[25px]"></span>
+             <span class="position font-medium"></span>
+           </div>
+           <img
+             src=""
+             alt=""
+             class="photo absolute top-12 left-8 "
+           /> 
+           <div
+             class="name absolute bottom-16  font-semibold player-name-card "
+           >
+           
+           </div>
+           <div
+             class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
+           >
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAC</span>
+               <span class="pace text-[12px]"></span>
+             </div>
+             <div class="flex flex-col text-center">
+               <span class="text-[10px]">SHO</span>
+               <span class="shooting text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAS</span>
+               <span class="passing text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DRI</span>
+               <span class="dribbling text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DEF</span>
+               <span class="defending text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PHY</span>
+               <span class="physical text-[12px]"></span>
+             </div>
+         </div>
+         <div
+             class=" flex flex-row justify-self-center gap-2 absolute bottom-4 left-16 player-name-card font-semibold "
+           > 
+           <img
+             src=""
+             alt=""
+             class="logo h-5 w-7 "
+           />
+           <img
+             src=""
+             alt=""
+             class="flag h-4 w-6 "
+           /> 
+             
+             </div>
+          </div>
+          <div class="card hidden chgm3 p-10 relative grid place-items-center">
+            <div
+             class="flex text-center flex-col  absolute top-11 left-6"
+           >
+             <span class="rating font-bold text-[25px]"></span>
+             <span class="position font-medium"></span>
+           </div>
+           <img
+             src=""
+             alt=""
+             class="photo absolute top-12 left-8 "
+           /> 
+           <div
+             class="name absolute bottom-16  font-semibold player-name-card "
+           >
+           
+           </div>
+           <div
+             class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
+           >
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAC</span>
+               <span class="pace text-[12px]"></span>
+             </div>
+             <div class="flex flex-col text-center">
+               <span class="text-[10px]">SHO</span>
+               <span class="shooting text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAS</span>
+               <span class="passing text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DRI</span>
+               <span class="dribbling text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DEF</span>
+               <span class="defending text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PHY</span>
+               <span class="physical text-[12px]"></span>
+             </div>
+         </div>
+         <div
+             class=" flex flex-row justify-self-center gap-2 absolute bottom-4 left-16 player-name-card font-semibold "
+           > 
+           <img
+             src=""
+             alt=""
+             class="logo h-5 w-7 "
+           />
+           <img
+             src=""
+             alt=""
+             class="flag h-4 w-6 "
+           /> 
+             
+             </div>
+          </div>
+          <div class="card hidden chgm4 p-10 relative grid place-items-center">
+            <div
+             class="flex text-center flex-col  absolute top-11 left-6"
+           >
+             <span class="rating font-bold text-[25px]"></span>
+             <span class="position font-medium"></span>
+           </div>
+           <img
+             src=""
+             alt=""
+             class="photo absolute top-12 left-8 "
+           /> 
+           <div
+             class="name absolute bottom-16  font-semibold player-name-card "
+           >
+           
+           </div>
+           <div
+             class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
+           >
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAC</span>
+               <span class="pace text-[12px]"></span>
+             </div>
+             <div class="flex flex-col text-center">
+               <span class="text-[10px]">SHO</span>
+               <span class="shooting text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAS</span>
+               <span class="passing text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DRI</span>
+               <span class="dribbling text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DEF</span>
+               <span class="defending text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PHY</span>
+               <span class="physical text-[12px]"></span>
+             </div>
+         </div>
+         <div
+             class=" flex flex-row justify-self-center gap-2 absolute bottom-4 left-16 player-name-card font-semibold "
+           > 
+           <img
+             src=""
+             alt=""
+             class="logo h-5 w-7 "
+           />
+           <img
+             src=""
+             alt=""
+             class="flag h-4 w-6 "
+           /> 
+             
+             </div>
+          </div>
+          <div class="card hidden chgm5 p-10 relative grid place-items-center">
+            <div
+             class="flex text-center flex-col  absolute top-11 left-6"
+           >
+             <span class="rating font-bold text-[25px]"></span>
+             <span class="position font-medium"></span>
+           </div>
+           <img
+             src=""
+             alt=""
+             class="photo absolute top-12 left-8 "
+           /> 
+           <div
+             class="name absolute bottom-16  font-semibold player-name-card "
+           >
+           
+           </div>
+           <div
+             class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
+           >
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAC</span>
+               <span class="pace text-[12px]"></span>
+             </div>
+             <div class="flex flex-col text-center">
+               <span class="text-[10px]">SHO</span>
+               <span class="shooting text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAS</span>
+               <span class="passing text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DRI</span>
+               <span class="dribbling text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DEF</span>
+               <span class="defending text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PHY</span>
+               <span class="physical text-[12px]"></span>
+             </div>
+         </div>
+         <div
+             class=" flex flex-row justify-self-center gap-2 absolute bottom-4 left-16 player-name-card font-semibold "
+           > 
+           <img
+             src=""
+             alt=""
+             class="logo h-5 w-7 "
+           />
+           <img
+             src=""
+             alt=""
+             class="flag h-4 w-6 "
+           /> 
+             
+             </div>
+          </div>
+          <div class="card hidden chgm6 p-10 relative grid place-items-center">
+            <div
+             class="flex text-center flex-col  absolute top-11 left-6"
+           >
+             <span class="rating font-bold text-[25px]"></span>
+             <span class="position font-medium"></span>
+           </div>
+           <img
+             src=""
+             alt=""
+             class="photo absolute top-12 left-8 "
+           /> 
+           <div
+             class="name absolute bottom-16  font-semibold player-name-card "
+           >
+           
+           </div>
+           <div
+             class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
+           >
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAC</span>
+               <span class="pace text-[12px]"></span>
+             </div>
+             <div class="flex flex-col text-center">
+               <span class="text-[10px]">SHO</span>
+               <span class="shooting text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAS</span>
+               <span class="passing text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DRI</span>
+               <span class="dribbling text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DEF</span>
+               <span class="defending text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PHY</span>
+               <span class="physical text-[12px]"></span>
+             </div>
+         </div>
+         <div
+             class=" flex flex-row justify-self-center gap-2 absolute bottom-4 left-16 player-name-card font-semibold "
+           > 
+           <img
+             src=""
+             alt=""
+             class="logo h-5 w-7 "
+           />
+           <img
+             src=""
+             alt=""
+             class="flag h-4 w-6 "
+           /> 
+             
+             </div>
+          </div>
+          <div class="card hidden chgm7 p-10 relative grid place-items-center">
+            <div
+             class="flex text-center flex-col  absolute top-11 left-6"
+           >
+             <span class="rating font-bold text-[25px]"></span>
+             <span class="position font-medium"></span>
+           </div>
+           <img
+             src=""
+             alt=""
+             class="photo absolute top-12 left-8 "
+           /> 
+           <div
+             class="name absolute bottom-16  font-semibold player-name-card "
+           >
+           
+           </div>
+           <div
+             class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
+           >
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAC</span>
+               <span class="pace text-[12px]"></span>
+             </div>
+             <div class="flex flex-col text-center">
+               <span class="text-[10px]">SHO</span>
+               <span class="shooting text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAS</span>
+               <span class="passing text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DRI</span>
+               <span class="dribbling text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DEF</span>
+               <span class="defending text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PHY</span>
+               <span class="physical text-[12px]"></span>
+             </div>
+         </div>
+         <div
+             class=" flex flex-row justify-self-center gap-2 absolute bottom-4 left-16 player-name-card font-semibold "
+           > 
+           <img
+             src=""
+             alt=""
+             class="logo h-5 w-7 "
+           />
+           <img
+             src=""
+             alt=""
+             class="flag h-4 w-6 "
+           /> 
+             
+             </div>
+          </div>
+          <div class="card hidden chgm8 p-10 relative grid place-items-center">
+            <div
+             class="flex text-center flex-col  absolute top-11 left-6"
+           >
+             <span class="rating font-bold text-[25px]"></span>
+             <span class="position font-medium"></span>
+           </div>
+           <img
+             src=""
+             alt=""
+             class="photo absolute top-12 left-8 "
+           /> 
+           <div
+             class="name absolute bottom-16  font-semibold player-name-card "
+           >
+           
+           </div>
+           <div
+             class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
+           >
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAC</span>
+               <span class="pace text-[12px]"></span>
+             </div>
+             <div class="flex flex-col text-center">
+               <span class="text-[10px]">SHO</span>
+               <span class="shooting text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAS</span>
+               <span class="passing text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DRI</span>
+               <span class="dribbling text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DEF</span>
+               <span class="defending text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PHY</span>
+               <span class="physical text-[12px]"></span>
+             </div>
+         </div>
+         <div
+             class=" flex flex-row justify-self-center gap-2 absolute bottom-4 left-16 player-name-card font-semibold "
+           > 
+           <img
+             src=""
+             alt=""
+             class="logo h-5 w-7 "
+           />
+           <img
+             src=""
+             alt=""
+             class="flag h-4 w-6 "
+           /> 
+             
+             </div>
+          </div>
+          <div class="card hidden chgm9 p-10 relative grid place-items-center">
+            <div
+             class="flex text-center flex-col  absolute top-11 left-6"
+           >
+             <span class="rating font-bold text-[25px]"></span>
+             <span class="position font-medium"></span>
+           </div>
+           <img
+             src=""
+             alt=""
+             class="photo absolute top-12 left-8 "
+           /> 
+           <div
+             class="name absolute bottom-16  font-semibold player-name-card "
+           >
+           
+           </div>
+           <div
+             class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
+           >
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAC</span>
+               <span class="pace text-[12px]"></span>
+             </div>
+             <div class="flex flex-col text-center">
+               <span class="text-[10px]">SHO</span>
+               <span class="shooting text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAS</span>
+               <span class="passing text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DRI</span>
+               <span class="dribbling text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DEF</span>
+               <span class="defending text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PHY</span>
+               <span class="physical text-[12px]"></span>
+             </div>
+         </div>
+         <div
+             class=" flex flex-row justify-self-center gap-2 absolute bottom-4 left-16 player-name-card font-semibold "
+           > 
+           <img
+             src=""
+             alt=""
+             class="logo h-5 w-7 "
+           />
+           <img
+             src=""
+             alt=""
+             class="flag h-4 w-6 "
+           /> 
+             
+             </div>
+          </div>
+          <div class="card hidden chgm10 p-10 relative grid place-items-center">
+            <div
+             class="flex text-center flex-col  absolute top-11 left-6"
+           >
+             <span class="rating font-bold text-[25px]"></span>
+             <span class="position font-medium"></span>
+           </div>
+           <img
+             src=""
+             alt=""
+             class="photo absolute top-12 left-8 "
+           /> 
+           <div
+             class="name absolute bottom-16  font-semibold player-name-card "
+           >
+           
+           </div>
+           <div
+             class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
+           >
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAC</span>
+               <span class="pace text-[12px]"></span>
+             </div>
+             <div class="flex flex-col text-center">
+               <span class="text-[10px]">SHO</span>
+               <span class="shooting text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAS</span>
+               <span class="passing text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DRI</span>
+               <span class="dribbling text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DEF</span>
+               <span class="defending text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PHY</span>
+               <span class="physical text-[12px]"></span>
+             </div>
+         </div>
+         <div
+             class=" flex flex-row justify-self-center gap-2 absolute bottom-4 left-16 player-name-card font-semibold "
+           > 
+           <img
+             src=""
+             alt=""
+             class="logo h-5 w-7 "
+           />
+           <img
+             src=""
+             alt=""
+             class="flag h-4 w-6 "
+           /> 
+             
+             </div>
+          </div>
+          <div class="card hidden chgm11 p-10 relative grid place-items-center">
+            <div
+             class="flex text-center flex-col  absolute top-11 left-6"
+           >
+             <span class="rating font-bold text-[25px]"></span>
+             <span class="position font-medium"></span>
+           </div>
+           <img
+             src=""
+             alt=""
+             class="photo absolute top-12 left-8 "
+           /> 
+           <div
+             class="name absolute bottom-16  font-semibold player-name-card "
+           >
+           
+           </div>
+           <div
+             class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
+           >
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAC</span>
+               <span class="pace text-[12px]"></span>
+             </div>
+             <div class="flex flex-col text-center">
+               <span class="text-[10px]">SHO</span>
+               <span class="shooting text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAS</span>
+               <span class="passing text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DRI</span>
+               <span class="dribbling text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DEF</span>
+               <span class="defending text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PHY</span>
+               <span class="physical text-[12px]"></span>
+             </div>
+         </div>
+         <div
+             class=" flex flex-row justify-self-center gap-2 absolute bottom-4 left-16 player-name-card font-semibold "
+           > 
+           <img
+             src=""
+             alt=""
+             class="logo h-5 w-7 "
+           />
+           <img
+             src=""
+             alt=""
+             class="flag h-4 w-6 "
+           /> 
+             
+             </div>
+          </div>
+          <div class="card hidden chgm12 p-10 relative grid place-items-center">
+            <div
+             class="flex text-center flex-col  absolute top-11 left-6"
+           >
+             <span class="rating font-bold text-[25px]"></span>
+             <span class="position font-medium"></span>
+           </div>
+           <img
+             src=""
+             alt=""
+             class="photo absolute top-12 left-8 "
+           /> 
+           <div
+             class="name absolute bottom-16  font-semibold player-name-card "
+           >
+           
+           </div>
+           <div
+             class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
+           >
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAC</span>
+               <span class="pace text-[12px]"></span>
+             </div>
+             <div class="flex flex-col text-center">
+               <span class="text-[10px]">SHO</span>
+               <span class="shooting text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PAS</span>
+               <span class="passing text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DRI</span>
+               <span class="dribbling text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">DEF</span>
+               <span class="defending text-[12px]"></span>
+             </div>
+             <div class="flex flex-col ">
+               <span class="text-[10px]">PHY</span>
+               <span class="physical text-[12px]"></span>
+             </div>
+         </div>
+         <div
+             class=" flex flex-row justify-self-center gap-2 absolute bottom-4 left-16 player-name-card font-semibold "
+           > 
+           <img
+             src=""
+             alt=""
+             class="logo h-5 w-7 "
+           />
+           <img
+             src=""
+             alt=""
+             class="flag h-4 w-6 "
+           /> 
+             
+             </div>
+          </div>
         </div>
 
     </section>
