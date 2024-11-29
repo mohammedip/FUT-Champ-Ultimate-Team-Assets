@@ -36,7 +36,11 @@ section button {
     height: 16rem;
     max-width: 12rem;
     min-width: 12rem;
-
+    
+}
+.card:hover{
+    transform: translate(0, -1rem) scaleX(1.25) scaleY(1.25);
+    transition-duration: 700ms;
 }
 
 .ST{

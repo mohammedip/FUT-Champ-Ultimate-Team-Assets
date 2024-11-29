@@ -6,6 +6,8 @@
     <title>Soccer team builder</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body class="relative bg-cover bg-center bg-black grid">
     <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -29,45 +31,20 @@
           <p id="nameError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid name.</p>
 
         </div>
-      
         <div>
-            <label
-            for="playerPhotoSelect"
+          <label
+            for="playerPhotoUrl"
             class="block mb-2 text-sm font-medium text-white"
-          >players Profil</label>
-            <select
-            id="playerPhotoSelect"
+          >players Profil URL</label>
+          <input
+            type="text"
+            id="playerPhotoUrl"
             class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
-          >
-            <option value="" disabled selected hidden>Choose the player profil</option>
-            <option value="https://cdn.sofifa.net/players/158/023/25_120.png">Lionel Messi</option>
-            <option value="https://cdn.sofifa.net/players/020/801/25_120.png">Cristiano Ronaldo</option>
-            <option value="https://cdn.sofifa.net/players/192/985/25_120.png">Kevin De Bruyne</option>
-            <option value="https://cdn.sofifa.net/players/231/747/25_120.png">Kylian Mbappé</option>
-            <option value="https://cdn.sofifa.net/players/203/376/25_120.png">Virgil van Dijk</option>
-            <option value="https://cdn.sofifa.net/players/205/452/25_120.png">Antonio Rudiger</option>
-            <option value="https://cdn.sofifa.net/players/190/871/25_120.png">Neymar Jr</option>
-            <option value="https://cdn.sofifa.net/players/192/985/25_120.png">Mohamed Salah</option>
-            <option value="https://cdn.sofifa.net/players/212/622/25_120.png">Joshua Kimmich</option>
-            <option value="https://cdn.sofifa.net/players/200/389/25_120.png">Jan Oblak</option>
-            <option value="https://cdn.sofifa.net/players/177/003/25_120.png">Luka Modrić</option>
-            <option value="https://cdn.sofifa.net/players/238/794/25_120.png">Vinicius Junior</option>
-            <option value="https://cdn.sofifa.net/players/231/410/25_120.png">Brahim Diáz</option>
-            <option value="https://cdn.sofifa.net/players/165/153/25_120.png">Karim Benzema</option>
-            <option value="https://cdn.sofifa.net/players/239/085/25_120.png">Erling Haaland</option>
-            <option value="https://cdn.sofifa.net/players/215/914/25_120.png">N'Golo Kanté</option>
-            <option value="https://cdn.sofifa.net/players/234/396/25_120.png">Alphonso Davies</option>
-            <option value="https://cdn.sofifa.net/players/209/981/25_120.png">Yassine Bounou</option>
-            <option value="https://cdn.sofifa.net/players/212/198/25_120.png">Bruno Fernandes</option>
-            <option value="https://cdn.sofifa.net/players/233/049/25_120.png">Jadon Sancho</option>
-            <option value="https://cdn.sofifa.net/players/231/281/25_120.png">Trent Alexander-Arnold</option>
-            <option value="https://cdn.sofifa.net/players/235/212/25_120.png">Achraf Hakimi</option>
-            <option value="https://cdn.sofifa.net/players/235/410/25_120.png">Youssef En-Nesyri</option>
-            <option value="https://cdn.sofifa.net/players/236/401/25_120.png">Noussair Mazraoui</option>
-            <option value="https://cdn.sofifa.net/players/259/480/25_120.png">Ismael Saibari</option>
-            <option value="https://cdn.sofifa.net/players/230/621/25_120.png">Gianluigi Donnarumma</option>
-          </select>
-          
+            placeholder="Lionel Messi"
+              
+          />
+          <p id="urlError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid URL.</p>
+
         </div>
       
         <div >
@@ -123,9 +100,7 @@
           <option value="https://cdn.sofifa.net/teams/27/120.png">Bayern Munich</option>
           <option value="https://cdn.sofifa.net/teams/1/120.png">Juventus</option>
           <option value="https://cdn.sofifa.net/teams/697/120.png">Inter Miami</option>
-          <option value="https://cdn.sofifa.net/teams/112195/120.png">Al-Hilal</option>
           <option value="https://cdn.sofifa.net/teams/240/120.png">Atletico Madrid</option>
-          <option value="https://cdn.sofifa.net/teams/112198/120.png">Al-Ittihad</option>
           <option value="https://cdn.sofifa.net/teams/326/120.png">Fenerbahçe</option>
           <option value="https://cdn.sofifa.net/teams/247/120.png">PSV</option>
         </select>
@@ -147,17 +122,38 @@
             </option>
             <option value="RW">Right Winger</option>
             <option value="ST">Striker</option>
-            <option value="CB">Center Back</option>
+            <option value="CB2">Center Back2</option>
+            <option value="CB1">Center Back1</option>
             <option value="LW">Left Winger</option>
             <option value="GK">Goalkeeper</option>
-            <option value="CM">Central Defensive Midfielder</option>
+            <option value="CM1">Central Defensive Midfielder1</option>
+            <option value="CM2">Central Defensive Midfielder2</option>
+            <option value="CM3">Central Defensive Midfielder3</option>
             <option value="LB">Left Back</option>
             <option value="RB">Right Back</option>
+          </select>
+        </div>
+        <div>
+          <label
+            for="main-bontouch"
+            class="block mb-2 text-sm font-medium text-white"
+          >Role</label>
+          <select
+            id="main-bontouch"
+            class="bg-black border border-blue-600 text-white text-sm rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 block p-2.5"
+          >
+            <option value="" disabled selected hidden>
+              The player will be :
+            </option>
+            <option value="M">Main</option>
+            <option value="BT">Bontouch</option>
+            
           </select>
         </div>
       
         <div>
           <label
+          
             for="rating"
             class="block mb-2 text-sm font-medium text-white"
           >Rating</label>
@@ -174,6 +170,7 @@
       
         <div>
           <label
+          id="paceLabel"
             for="pace"
             class="block mb-2 text-sm font-medium text-white"
           >Pace</label>
@@ -189,6 +186,7 @@
       
         <div>
           <label
+          id="shootingLabel"
             for="shooting"
             class="block mb-2 text-sm font-medium text-white"
           >Shooting</label>
@@ -204,6 +202,7 @@
       
         <div>
           <label
+          id="passingLabel"
             for="passing"
             class="block mb-2 text-sm font-medium text-white"
           >Passing</label>
@@ -219,6 +218,7 @@
       
         <div>
           <label
+          id="dribblingLabel"
             for="dribbling"
             class="block mb-2 text-sm font-medium text-white"
           >Dribbling</label>
@@ -234,6 +234,7 @@
       
         <div>
           <label
+          id="defendingLabel"
             for="defending"
             class="block mb-2 text-sm font-medium text-white"
           >Defending</label>
@@ -249,6 +250,7 @@
       
         <div>
           <label
+          id="physicalLabel"
             for="physical"
             class="block mb-2 text-sm font-medium text-white"
           >Physical</label>
@@ -261,6 +263,8 @@
           />
           <p id="physicalError" class="text-red-500 text-xs mt-1 hidden">Please enter a physical between 10 ~ 99.</p>
         </div>
+      
+       
       
         <div >
           <button
@@ -282,17 +286,17 @@
       </div>
         <div  class="rel grid stadium1 grid-cols-9 grid-rows-4 items-center place-items-center bg-cover h-[1100px]  ">         
                
-                        <div id="RW" class="card card11 RW "></div>
-                        <div id="ST" class="card card10 ST"></div>
-                        <div id="LW" class="card card9 LW "></div>
-                        <div id="CM1" class="card card8 CM1"></div>
-                        <div id="CM2" class="card card7 CM2"></div>
-                        <div id="CM3" class="card card6 CM3 "></div>
-                        <div id="LB" class="card card5 LB "></div>
-                        <div id="CB1" class="card card4 CB1"></div>
-                        <div id="CB2" class="card card3 CB2"></div>
-                        <div id="RB" class="card card2 RB "></div>
-                        <div id="GK" class="card card1 GK"></div>
+                        <div id="RW" class="card card11 RW  "></div>
+                        <div id="ST" class="card card10 ST "></div>
+                        <div id="LW" class="card card9 LW  "></div>
+                        <div id="CM1" class="card card8 CM1 "></div>
+                        <div id="CM2" class="card card7 CM2 "></div>
+                        <div id="CM3" class="card card6 CM3  "></div>
+                        <div id="LB" class="card card5 LB  "></div>
+                        <div id="CB1" class="card card4 CB1 "></div>
+                        <div id="CB2" class="card card3 CB2 "></div>
+                        <div id="RB" class="card card2 RB  "></div>
+                        <div id="GK" class="card card1 GK "></div>
                          
         </div>
 
@@ -311,9 +315,14 @@
              class="photo absolute top-12 left-8 "
            /> 
            <div
+           class="flex text-center flex-col  absolute top-14 right-5"
+         >
+          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+         </div>
+           <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
-           
            </div>
            <div
              class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
@@ -366,11 +375,17 @@
              <span class="rating font-bold text-[25px]"></span>
              <span class="position font-medium"></span>
            </div>
-           <img
+          <img
              src=""
              alt=""
              class="photo absolute top-12 left-8 "
            /> 
+           <div
+           class="flex text-center flex-col  absolute top-14 right-5"
+         >
+          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+         </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
@@ -427,11 +442,17 @@
              <span class="rating font-bold text-[25px]"></span>
              <span class="position font-medium"></span>
            </div>
-           <img
+          <img
              src=""
              alt=""
              class="photo absolute top-12 left-8 "
            /> 
+           <div
+           class="flex text-center flex-col  absolute top-14 right-5"
+         >
+          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+         </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
@@ -488,11 +509,17 @@
              <span class="rating font-bold text-[25px]"></span>
              <span class="position font-medium"></span>
            </div>
-           <img
+          <img
              src=""
              alt=""
              class="photo absolute top-12 left-8 "
            /> 
+           <div
+           class="flex text-center flex-col  absolute top-14 right-5"
+         >
+          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+         </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
@@ -549,11 +576,17 @@
              <span class="rating font-bold text-[25px]"></span>
              <span class="position font-medium"></span>
            </div>
-           <img
+          <img
              src=""
              alt=""
              class="photo absolute top-12 left-8 "
            /> 
+           <div
+           class="flex text-center flex-col  absolute top-14 right-5"
+         >
+          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+         </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
@@ -610,11 +643,17 @@
              <span class="rating font-bold text-[25px]"></span>
              <span class="position font-medium"></span>
            </div>
-           <img
+          <img
              src=""
              alt=""
              class="photo absolute top-12 left-8 "
            /> 
+           <div
+           class="flex text-center flex-col  absolute top-14 right-5"
+         >
+          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+         </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
@@ -671,11 +710,17 @@
              <span class="rating font-bold text-[25px]"></span>
              <span class="position font-medium"></span>
            </div>
-           <img
+          <img
              src=""
              alt=""
              class="photo absolute top-12 left-8 "
            /> 
+           <div
+           class="flex text-center flex-col  absolute top-14 right-5"
+         >
+          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+         </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
@@ -732,11 +777,17 @@
              <span class="rating font-bold text-[25px]"></span>
              <span class="position font-medium"></span>
            </div>
-           <img
+          <img
              src=""
              alt=""
              class="photo absolute top-12 left-8 "
            /> 
+           <div
+           class="flex text-center flex-col  absolute top-14 right-5"
+         >
+          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+         </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
@@ -793,11 +844,17 @@
              <span class="rating font-bold text-[25px]"></span>
              <span class="position font-medium"></span>
            </div>
-           <img
+          <img
              src=""
              alt=""
              class="photo absolute top-12 left-8 "
            /> 
+           <div
+           class="flex text-center flex-col  absolute top-14 right-5"
+         >
+          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+         </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
@@ -854,11 +911,17 @@
              <span class="rating font-bold text-[25px]"></span>
              <span class="position font-medium"></span>
            </div>
-           <img
+          <img
              src=""
              alt=""
              class="photo absolute top-12 left-8 "
            /> 
+           <div
+           class="flex text-center flex-col  absolute top-14 right-5"
+         >
+          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+         </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
@@ -915,11 +978,17 @@
              <span class="rating font-bold text-[25px]"></span>
              <span class="position font-medium"></span>
            </div>
-           <img
+          <img
              src=""
              alt=""
              class="photo absolute top-12 left-8 "
            /> 
+           <div
+           class="flex text-center flex-col  absolute top-14 right-5"
+         >
+          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+         </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
@@ -976,11 +1045,17 @@
              <span class="rating font-bold text-[25px]"></span>
              <span class="position font-medium"></span>
            </div>
-           <img
+          <img
              src=""
              alt=""
              class="photo absolute top-12 left-8 "
            /> 
+           <div
+           class="flex text-center flex-col  absolute top-14 right-5"
+         >
+          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+         </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
