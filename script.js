@@ -11,6 +11,11 @@ const card8 = document.querySelector(".card8")
 const card7 = document.querySelector(".card7")
 const card6 = document.querySelector(".card6")
 const playerCards = document.querySelectorAll(".card")
+const iconesChangement = document.querySelectorAll(".iconeChangement");
+const btnsDelete=document.querySelectorAll(".btnDelete");
+const iconesUpdate=document.querySelectorAll(".iconeUpdate");
+
+
 const positionSelect =document.getElementById("Position")
 
 let players = JSON.parse(localStorage.getItem("players")) || [];
@@ -19,7 +24,8 @@ let plyrM=1
 let plyrBT=1
 let idPlayer=1
 let idPlayerToUpdate=0
-
+let playerToReplaceId1=null
+let playerToReplaceId2=null
  // geting data from localstorage---------------------------------------------------------------------------
 
 get_players(players);
@@ -30,13 +36,21 @@ function get_players(players) {
       if(player.role==="M"){
        addMainplayer(player);
        plyrM++
+       if(idPlayer>player.playerId){
+        idPlayer=idPlayer
+       }else{
        idPlayer=player.playerId+1
+      }
       }else{
     const cardBontouchplayer =document.querySelector(`.chgm${plyrBT}`)
     cardBontouchplayer.classList.remove("hidden")
     addBonTouchPlayer(player)
     plyrBT++
-    idPlayer=player.playerId+1
+    if(idPlayer>player.playerId){
+      idPlayer=idPlayer
+     }else{
+     idPlayer=player.playerId+1
+    }
       }
     });
   }
@@ -323,6 +337,40 @@ function modifierPlayer(){
 
 }
 
+// changement players---------------------------------------------------------------------------------
+
+
+function changementPlayers(playerId1,playerId2){
+  
+  let player1 = players.find((joueur) => joueur.playerId == playerId1);
+  let player2 = players.find((joueur) => joueur.playerId == playerId2);
+
+let changement=""
+changement=player1.role
+player1.role=player2.role
+player2.role=changement
+
+changement=player1.position
+player1.position=player2.position
+player2.position=changement
+
+deletePlayer(playerId1)
+deletePlayer(playerId2)
+players.push(player1);
+players.push(player2);
+
+localStorage.setItem("players", JSON.stringify(players));
+Swal.fire({
+ title: "Success",
+ icon: "success",
+ confirmButtonText: "OK",
+}).then((result) => {
+ if (result.isConfirmed) {
+   window.location.reload();
+ }
+});
+}
+
    // statistique validation---------------------------------------------------------------------------
 
 function statistiquesValidation(valid , inputId, megId){
@@ -435,6 +483,8 @@ btnAdd.addEventListener("click",()=>{
       plyrBT++;
       }
     }
+   window.location.reload();
+   
 }) 
 
 //  button update---------------------------------------------------------------------------
@@ -459,14 +509,14 @@ btnUpdate.addEventListener("click",(event)=>{
        });
 })
 
-// delete-iconeUpdate-iconechangement cardPlayer
+// delete-iconeUpdate-iconeChangement cardPlayer----------------------------------
 
 
 playerCards.forEach((playerCard)=>{
-playerCard.addEventListener("mouseenter",(event)=>{
+playerCard.addEventListener("mouseenter",()=>{
     
       const btnDelete=playerCard.querySelector(".btnDelete");
-      btnDelete.addEventListener("click",()=>{
+      btnDelete.addEventListener("click",(event)=>{
         event.preventDefault();
             Swal.fire({
               title: "Are you sure?",
@@ -504,12 +554,41 @@ playerCard.addEventListener("mouseenter",(event)=>{
         goToForm()
         
       }) 
-    
-      const iconechangement=playerCard.querySelector(".iconeChangement");
-      iconechangement.addEventListener("click",()=>{
+
+      const iconeChangement=playerCard.querySelector(".iconeChangement");
+      iconeChangement.addEventListener("click",()=>{
+        console.log(playerToReplaceId1)
+        console.log(playerToReplaceId2)
+
+        if(playerToReplaceId1=== null){
+
+           playerToReplaceId1=playerCard.querySelector(".playerId").textContent
+        }else if(playerToReplaceId1!== null && playerToReplaceId2=== null){
+
+          playerToReplaceId2=playerCard.querySelector(".playerId").textContent
+         if(playerToReplaceId1===playerToReplaceId2){
+
+            Swal.fire({
+              text: "It's the same player",
+              icon: "warning",
+            confirmButtonText: "OK",
+            }).then((result) => {
+              if (result.isConfirmed) {
+            playerToReplaceId1= null
+            playerToReplaceId2= null
+            window.location.reload();
+              }
+            })
+            }else{
+
+            changementPlayers(playerToReplaceId1,playerToReplaceId2)
+            playerToReplaceId1= null
+            playerToReplaceId2= null
+            }
       
+        }
         
-      }) 
+      })
    })
 })
 
