@@ -1,4 +1,6 @@
+document.addEventListener("DOMContentLoaded", () => {
 const btnAdd = document.getElementById("add")
+const btnUpdate = document.getElementById("update")
 const bonTouch =document.querySelector(".bontouch")
 const forma =document.querySelector(".stadium1")
 const formaselect = document.getElementById("formaselect")
@@ -8,38 +10,72 @@ const card9 = document.querySelector(".card9")
 const card8 = document.querySelector(".card8")
 const card7 = document.querySelector(".card7")
 const card6 = document.querySelector(".card6")
+const playerCards = document.querySelectorAll(".card")
+const positionSelect =document.getElementById("Position")
 
 let players = JSON.parse(localStorage.getItem("players")) || [];
 
 let plyrM=1
 let plyrBT=1
+let idPlayer=1
+let idPlayerToUpdate=0
 
  // geting data from localstorage---------------------------------------------------------------------------
 
-getTask_count(players);
+get_players(players);
 
-function getTask_count(players) {  
+function get_players(players) {  
   if (!(players.length === 0)) {
     players.forEach((player) => {
       if(player.role==="M"){
        addMainplayer(player);
        plyrM++
+       idPlayer=player.playerId+1
       }else{
-    const cardplayer =document.querySelector(`.chgm${plyrBT}`)
-    cardplayer.classList.remove("hidden")
+    const cardBontouchplayer =document.querySelector(`.chgm${plyrBT}`)
+    cardBontouchplayer.classList.remove("hidden")
     addBonTouchPlayer(player)
     plyrBT++
+    idPlayer=player.playerId+1
       }
     });
   }
 }
 
-   // add player to localstorage---------------------------------------------------------------------------
+// go to form by clicking on the update icone--------------------------
 
- function addPlayer(){
+function goToForm() {
+   document.getElementById('formulaire').scrollIntoView({
+     behavior: 'smooth' 
+    }); 
+  }
 
-     const player =
+// get data from player card to the inputs------------------
+
+function cardDataToInput(playerId){
+  let player = players.find((joueur) => joueur.playerId == playerId);
+
+      document.getElementById("name").value=player.name
+      document.getElementById("playerPhotoUrl").value=player.photo
+      document.getElementById("Position").value=player.position
+      document.getElementById("flagSelect").value=player.flag
+      document.getElementById("clubSelect").value=player.logo
+      document.getElementById("main-bontouch").value=player.role
+      document.getElementById("rating").value=player.rating
+      document.getElementById("pace").value=player.pace
+      document.getElementById("shooting").value=player.shooting
+      document.getElementById("passing").value=player.passing
+      document.getElementById("dribbling").value=player.dribbling
+      document.getElementById("defending").value=player.defending
+      document.getElementById("physical").value=player.physical
+      idPlayerToUpdate=player.playerId
+}
+
+// get data from inputs --------------------------------------------------------------------
+function getInputData(){
+  const player =
     {
+      "playerId":idPlayer,
       "name": document.getElementById("name").value,
       "photo": document.getElementById("playerPhotoUrl").value,
       "position": document.getElementById("Position").value,
@@ -54,26 +90,37 @@ function getTask_count(players) {
       "defending": document.getElementById("defending").value,
       "physical": document.getElementById("physical").value
     }
+    return player
+}
+
+   // add player to localstorage---------------------------------------------------------------------------
+
+ function addPlayer(){
+
+     const player = getInputData()
+    
 
     let playerExiste = false;
-  
-  
+    if(players.length>=1){
       for (let i = 0; i < players.length; i++) {
           const joueur = players[i];
-          if (joueur.position === player.position && joueur.role === "M") {
+          if (joueur.position === player.position && joueur.role === player.role && joueur.role === "M") {
               playerExiste = true;
-              plyrM -= 1;
-              break; 
+             return null;
           }
       }
-  
+  }
 
-        players.push(player);
-    localStorage.setItem("players", JSON.stringify(players));
-    return player;
-  
-     }
+      if (!playerExiste) {
+          players.push(player);
+          localStorage.setItem("players", JSON.stringify(players));
+          idPlayer++
+          return player;
+      }
       
+  }
+  
+    
    
    // add main player to html---------------------------------------------------------------------------
 
@@ -117,51 +164,58 @@ function addMainplayer(player){
       break;
   } 
   
-  const cardplayer =document.getElementById(id)
-  cardplayer.innerHTML=`
+  const cardMainplayer =document.getElementById(id)
+  cardMainplayer.innerHTML=`
   <div class="card p-10 relative grid place-items-center">
      <div
       class="flex text-center flex-col  absolute top-11 left-6"
     >
-      <span class="font-bold text-[25px]">${player.rating}</span>
+      <span class="rating font-bold text-[25px]">${player.rating}</span>
       <span class="position font-medium">${player.position}</span>
     </div>
     <img
       src="${player.photo}"
       alt=""
-      class="absolute top-12 left-8 "
+      class="photo absolute top-12 left-8 "
     /> 
     <div
-      class="absolute bottom-16  font-semibold player-name-card "
-    >
-    ${player.name}
+           class="flex text-center flex-col  absolute top-14 right-5"
+         >
+          <button ><i class="iconeUpdate  fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class=" btnDelete  fa-solid fa-trash" style="color: #fe0101;"></i></button>
+          <button ><i class="iconeChangement fa-solid fa-repeat" style="color: #2900f5;"></i></button>    
     </div>
+    <div
+      class="name absolute bottom-16  font-semibold player-name-card "
+    >${player.name}</div><div
+      class="hidden playerId absolute bottom-16  font-semibold player-name-card "
+    >${player.playerId}</div>
     <div
       class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
     >
       <div class="flex flex-col ">
         <span class="text-[10px]">${statistique[0]}</span>
-        <span class="text-[12px]">${player.pace}</span>
+        <span class="pace text-[12px]">${player.pace}</span>
       </div>
       <div class="flex flex-col text-center">
         <span class="text-[10px]">${statistique[1]}</span>
-        <span class="text-[12px]">${player.shooting}</span>
+        <span class="shooting text-[12px]">${player.shooting}</span>
       </div>
       <div class="flex flex-col ">
         <span class="text-[10px]">${statistique[2]}</span>
-        <span class="text-[12px]">${player.passing}</span>
+        <span class="passing text-[12px]">${player.passing}</span>
       </div>
       <div class="flex flex-col ">
         <span class="text-[10px]">${statistique[3]}</span>
-        <span class="text-[12px]">${player.dribbling}</span>
+        <span class="dribbling text-[12px]">${player.dribbling}</span>
       </div>
       <div class="flex flex-col ">
         <span class="text-[10px]">${statistique[4]}</span>
-        <span class="text-[12px]">${player.defending}</span>
+        <span class="defending text-[12px]">${player.defending}</span>
       </div>
       <div class="flex flex-col ">
         <span class="text-[10px]">${statistique[5]}</span>
-        <span class="text-[12px]">${player.physical}</span>
+        <span class="physical text-[12px]">${player.physical}</span>
       </div>
   </div>
   <div
@@ -170,12 +224,12 @@ function addMainplayer(player){
     <img
       src="${player.logo}"
       alt=""
-      class="h-5 w-7 "
+      class="logo h-5 w-7 "
     />
     <img
       src="${player.flag}"
       alt=""
-      class="h-4 w-6 "
+      class="flag h-4 w-6 "
     /> 
       
       </div>
@@ -186,24 +240,89 @@ function addMainplayer(player){
 
  function addBonTouchPlayer(player){
 
-    const cardplayer =document.querySelector(`.chgm${plyrBT}`)
-    cardplayer.classList.remove("hidden")
-    cardplayer.querySelector(".rating").textContent=player.rating
-    cardplayer.querySelector(".position").textContent=player.position
-    cardplayer.querySelector(".photo").src=player.photo
-    cardplayer.querySelector(".name").textContent=player.name
-    cardplayer.querySelector(".pace").textContent=player.pace
-    cardplayer.querySelector(".shooting").textContent=player.shooting
-    cardplayer.querySelector(".passing").textContent=player.passing
-    cardplayer.querySelector(".dribbling").textContent=player.dribbling
-    cardplayer.querySelector(".defending").textContent=player.defending
-    cardplayer.querySelector(".physical").textContent=player.physical
-    cardplayer.querySelector(".logo").src=player.logo
-    cardplayer.querySelector(".flag").src=player.flag
+    const cardBontouchplayer =document.querySelector(`.chgm${plyrBT}`)
+    cardBontouchplayer.classList.remove("hidden")
+    cardBontouchplayer.querySelector(".rating").textContent=player.rating
+    cardBontouchplayer.querySelector(".position").textContent=player.position
+    cardBontouchplayer.querySelector(".photo").src=player.photo
+    cardBontouchplayer.querySelector(".name").textContent=player.name
+    cardBontouchplayer.querySelector(".playerId").textContent=player.playerId
+    cardBontouchplayer.querySelector(".pace").textContent=player.pace
+    cardBontouchplayer.querySelector(".shooting").textContent=player.shooting
+    cardBontouchplayer.querySelector(".passing").textContent=player.passing
+    cardBontouchplayer.querySelector(".dribbling").textContent=player.dribbling
+    cardBontouchplayer.querySelector(".defending").textContent=player.defending
+    cardBontouchplayer.querySelector(".physical").textContent=player.physical
+    cardBontouchplayer.querySelector(".logo").src=player.logo
+    cardBontouchplayer.querySelector(".flag").src=player.flag
  }
 
-
+// delete player---------------------------------------------------------------------------------
       
+
+function deletePlayer(playerId) {
+
+  let index = players.findIndex((joueur) => joueur.playerId == playerId);
+
+  if (index !== -1) {
+    players.splice(index, 1);
+    localStorage.setItem("players", JSON.stringify(players));
+  }
+}
+
+
+// modifier player---------------------------------------------------------------------------------
+      
+
+function modifierPlayer(){
+  
+  let player = players.find((joueur) => joueur.playerId == idPlayerToUpdate);
+  if(!validation()){
+    return;
+  }
+   let updatedPlayer=getInputData()
+   updatedPlayer.playerId=idPlayerToUpdate
+  
+
+   deletePlayer(idPlayerToUpdate)
+   let playerExiste = false;
+     for (let i = 0; i < players.length; i++) {
+         const joueur = players[i];
+         if (joueur.position === updatedPlayer.position && joueur.role === updatedPlayer.role && joueur.role === "M") {
+             playerExiste = true;
+             Swal.fire({
+              title: "Alert",
+              text: "Position already taken",
+              icon: "warning",
+              confirmButtonText: "OK",
+            })
+            players.push(player);
+            localStorage.setItem("players", JSON.stringify(players));
+           
+            btnAdd.classList.remove("hidden")
+            btnUpdate.classList.add("hidden")
+            return false;
+         }
+     }
+     if (!playerExiste) {
+       
+         players.push(updatedPlayer);
+         localStorage.setItem("players", JSON.stringify(players));
+         Swal.fire({
+          title: "Update",
+          text: "the player is Updated",
+          icon: "success",
+          confirmButtonText: "OK",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
+     }
+  
+
+}
+
    // statistique validation---------------------------------------------------------------------------
 
 function statistiquesValidation(valid , inputId, megId){
@@ -212,12 +331,13 @@ function statistiquesValidation(valid , inputId, megId){
   if (!statistiquesRegex.test(statistique) || statistique === "") {
       
       document.getElementById(`${megId}`).classList.remove("hidden");
-      return valid = false;
+      valid = false;
   } else {
       document.getElementById(`${megId}`).classList.add("hidden");
-      return valid=true
+      
+       
   }
-
+return valid
 }
      // validation ----------------------------------------------------------------------------
 
@@ -231,22 +351,19 @@ function validation(){
   if (!nameRegex.test(name) || name === "") {
       
       document.getElementById("nameError").classList.remove("hidden");
-      return valid = false;
+       valid = false;
        
   } else {
       document.getElementById("nameError").classList.add("hidden");
-      valid=true
   }
   const playerPhotoUrl = document.getElementById("playerPhotoUrl").value;
   const playerPhotoUrlRegex = /^(https?:\/\/)?([\w\-]+\.)+[\w\-]{2,}(\/[\w\-._~:/?#[\]@!$&'()*+,;=%]*)?$/;
   if (!playerPhotoUrlRegex.test(playerPhotoUrl) || playerPhotoUrl === "") {
       
       document.getElementById("urlError").classList.remove("hidden");
-      return valid = false;
-       
+      valid = false;
   } else {
       document.getElementById("urlError").classList.add("hidden");
-      valid=true
   }
 
     
@@ -259,7 +376,7 @@ function validation(){
   statistiquesValidation(valid , "physical" , "physicalError")
 
 if(!statistiquesValidation(valid , "rating" , "ratingError") ||  !statistiquesValidation(valid , "pace" ,"paceError")|| !statistiquesValidation(valid , "shooting" , "shootingError")||!statistiquesValidation(valid , "passing" , "passingError") ||!statistiquesValidation(valid , "dribbling" , "dribblingError") ||!statistiquesValidation(valid , "defending" , "defendingError") ||!statistiquesValidation(valid , "physical" , "physicalError") ){
-  return valid = false
+   valid = false
 }
 
 return valid
@@ -270,52 +387,132 @@ return valid
    //  button add---------------------------------------------------------------------------
 
 btnAdd.addEventListener("click",()=>{
-   const playerRoll=document.getElementById("main-bontouch")
+   
+   if(!validation()){
+    return;
+  }
+  const playerRoll=document.getElementById("main-bontouch")
+   let existeplyr=addPlayer()
+  if(existeplyr=== null){
+    Swal.fire({
+      title: "Alert",
+      text: "Position already taken",
+      icon: "warning",
+      confirmButtonText: "OK",
+    })
+    return;
+  }
   
-   if(playerRoll.value==="M"){
-          validation()
-          if(validation()){
-            
-            addMainplayer(addPlayer())
+
+  if(playerRoll.value==="M"){
+        
+        addMainplayer(existeplyr)
         plyrM++;
         if(plyrM>11){
-          validation()
-          if(validation()){
-          addBonTouchPlayer(addPlayer())
+
+          addBonTouchPlayer(existeplyr)
           plyrBT++;
-          }
+          
         }
-     }
-   }else if(playerRoll.value==="BT"){
-    validation()
-    if(validation()){
+     }else if(playerRoll.value==="BT"){
+   
 
-    addBonTouchPlayer(addPlayer())
-    plyrBT++;
-    }
-    if(plyrBT>12){
-      alert("Le bontouch est plain");
-      return
-  
-    }
-   }else{
-    validation()
-    if(validation()){
+        addBonTouchPlayer(existeplyr)
+        plyrBT++;
+        
+        if(plyrBT>12){
+          alert("Le bontouch est plain");
+          return
+      }
     
-      addMainplayer(addPlayer())
-  plyrM++;
-  if(plyrM>11){
-    validation()
-    if(validation()){
+   }else{
+        addMainplayer(existeplyr)
+        plyrM++;
 
-    addBonTouchPlayer(addPlayer())
-    plyrBT++;
-    }
-  }
-}
-   }
+    if(plyrM>11){
   
+      addBonTouchPlayer(existeplyr)
+      plyrBT++;
+      }
+    }
 }) 
+
+//  button update---------------------------------------------------------------------------
+
+
+btnUpdate.addEventListener("click",(event)=>{
+  event.preventDefault();
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#d33",
+          cancelButtonColor: "#3085d6",
+          confirmButtonText: "Yes, update it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+              modifierPlayer()
+            
+          }
+       });
+})
+
+// delete-iconeUpdate-iconechangement cardPlayer
+
+
+playerCards.forEach((playerCard)=>{
+playerCard.addEventListener("mouseenter",(event)=>{
+    
+      const btnDelete=playerCard.querySelector(".btnDelete");
+      btnDelete.addEventListener("click",()=>{
+        event.preventDefault();
+            Swal.fire({
+              title: "Are you sure?",
+              text: "You won't be able to revert this!",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#d33",
+              cancelButtonColor: "#3085d6",
+              confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+              if (result.isConfirmed) {
+
+                deletePlayer(playerCard.querySelector(".playerId").textContent)
+
+                Swal.fire({
+                  title: "Delete",
+                  text: "the player is Deleted",
+                  icon: "success",
+                  confirmButtonText: "OK",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.reload();
+                  }
+                });
+              }
+          });
+        })
+      
+      const iconeUpdate=playerCard.querySelector(".iconeUpdate");
+      iconeUpdate.addEventListener("click",()=>{
+      
+        btnAdd.classList.add("hidden")
+        btnUpdate.classList.remove("hidden")
+        cardDataToInput(playerCard.querySelector(".playerId").textContent)
+        goToForm()
+        
+      }) 
+    
+      const iconechangement=playerCard.querySelector(".iconeChangement");
+      iconechangement.addEventListener("click",()=>{
+      
+        
+      }) 
+   })
+})
+
 
 // Golkiper choosing ---------------------------------------------------------------------------
 
@@ -353,11 +550,33 @@ formaselect.addEventListener("click",()=>{
     card10.classList= "card card10 ST"
     card9.classList= "card card9 LW"
     card6.classList=" card card6 CM3"
-    card11.querySelector(".position").textContent="RW"
+    if (card11.firstChild) {
+      card11.querySelector(".position").textContent="RW"
+  }
+  if (card10.firstChild) {
     card10.querySelector(".position").textContent="ST"
+  }
+    if (card9.firstChild) {
     card9.querySelector(".position").textContent="LW"
+    }
+    if (card6.firstChild) {
     card6.querySelector(".position").textContent="CM3"
-
+    }
+    positionSelect.innerHTML=`<option value="" disabled selected hidden>
+              Choose the position
+            </option>
+            <option value="RW">Right Winger</option>
+            <option value="ST">Striker</option>
+            <option value="CB2">Center Back2</option>
+            <option value="CB1">Center Back1</option>
+            <option value="LW">Left Winger</option>
+            <option value="GK">Goalkeeper</option>
+            <option value="CM1">Central Defensive Midfielder1</option>
+            <option value="CM2">Central Defensive Midfielder2</option>
+            <option value="CM3">Central Defensive Midfielder3</option>
+            <option value="LB">Left Back</option>
+            <option value="RB">Right Back</option>
+            `
   }else if(formaselect.value==="4-4-2"){
     
     forma.classList ="grid stadium2 grid-cols-9 grid-rows-4 items-center place-items-center bg-cover h-[1100px]  "
@@ -365,13 +584,35 @@ formaselect.addEventListener("click",()=>{
     card10.classList= "card card10 ST2"
     card9.classList= "card card9 LM"
     card6.classList=" card card6 RM"
-    card11.querySelector(".position").textContent="ST1"
+    if (card11.firstChild) {
+      card11.querySelector(".position").textContent="ST1"
+  }
+  if (card10.firstChild) {
     card10.querySelector(".position").textContent="ST2"
+  }
+    if (card9.firstChild) {
     card9.querySelector(".position").textContent="LM"
+    }
+    if (card6.firstChild) {
     card6.querySelector(".position").textContent="RM"
-
+    }
+    positionSelect.innerHTML=`<option value="" disabled selected hidden>
+    Choose the position
+  </option>
+  <option value="ST2">Striker2</option>
+  <option value="ST1">Striker1</option>
+  <option value="CB2">Center Back2</option>
+  <option value="CB1">Center Back1</option>
+  <option value="LM">Left Midfielder</option>
+  <option value="GK">Goalkeeper</option>
+  <option value="CM1">Central Defensive Midfielder1</option>
+  <option value="CM2">Central Defensive Midfielder2</option>
+  <option value="RM">Right Midfielder</option>
+  <option value="LB">Left Back</option>
+  <option value="RB">Right Back</option>
+  `
 
   }
   
 })
-
+})

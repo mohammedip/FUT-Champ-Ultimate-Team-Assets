@@ -12,8 +12,8 @@
   <body class="relative bg-cover bg-center bg-black grid">
     <div class="absolute inset-0 bg-black opacity-50"></div>
 
-    <section class="relative grid gap-6 mb-6 ">
-        <form
+    <section id="equipe" class=" relative grid gap-6 mb-6 ">
+        <form id="formulaire"
         class="relative grid grid-cols-2 gap-6 p-4 rounded-lg bg-black lg:grid-cols-4"
       >
         <div>
@@ -263,9 +263,7 @@
           />
           <p id="physicalError" class="text-red-500 text-xs mt-1 hidden">Please enter a physical between 10 ~ 99.</p>
         </div>
-      
-       
-      
+
         <div >
           <button
             id="add"
@@ -273,6 +271,15 @@
             type="button"
           >
             Add player
+          </button>
+        </div>
+        <div >
+          <button
+            id="update"
+            class="bg-green-700 hover:bg-green-800 hidden text-white font-bold py-4 px-8 mt-4 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+            type="button"
+          >
+            Update player
           </button>
         </div>
       </form>
@@ -284,7 +291,7 @@
 
         </select>
       </div>
-        <div  class="rel grid stadium1 grid-cols-9 grid-rows-4 items-center place-items-center bg-cover h-[1100px]  ">         
+        <div  class="terain grid stadium1 grid-cols-9 grid-rows-4 items-center place-items-center bg-cover h-[1100px]  ">         
                
                         <div id="RW" class="card card11 RW  "></div>
                         <div id="ST" class="card card10 ST "></div>
@@ -301,7 +308,6 @@
         </div>
 
         <div class="bontouch relative grid grid-cols-3 gap-2 place-items-center lg:grid-cols-6 lg:gap-x-6">
-          
           <div class="card hidden chgm1 p-10 relative grid place-items-center ">
             <div
              class="flex text-center flex-col  absolute top-11 left-6"
@@ -317,11 +323,16 @@
            <div
            class="flex text-center flex-col  absolute top-14 right-5"
          >
-          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
-           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+          <button  ><i class="iconeUpdate fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="btnDelete fa-solid fa-trash" style="color: #fe0101;"></i></button>
+           <button ><i class="iconeChangement fa-solid fa-repeat" style="color: #2900f5;"></i></button>    
          </div>
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
+           >
+           </div>
+           <div
+             class="hidden playerId absolute bottom-16  font-semibold player-name-card "
            >
            </div>
            <div
@@ -383,13 +394,16 @@
            <div
            class="flex text-center flex-col  absolute top-14 right-5"
          >
-          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
-           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+          <button ><i class="iconeUpdate fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="btnDelete fa-solid fa-trash" style="color: #fe0101;"></i></button>
+     <button ><i class="iconeChangement fa-solid fa-repeat" style="color: #2900f5;"></i></button>    
          </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
-           
+           </div><div
+             class="hidden playerId absolute bottom-16  font-semibold player-name-card "
+           >
            </div>
            <div
              class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
@@ -450,13 +464,16 @@
            <div
            class="flex text-center flex-col  absolute top-14 right-5"
          >
-          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
-           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+          <button ><i class="iconeUpdate fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="btnDelete fa-solid fa-trash" style="color: #fe0101;"></i></button>
+     <button ><i class="iconeChangement fa-solid fa-repeat" style="color: #2900f5;"></i></button>    
          </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
-           
+           </div><div
+             class="hidden playerId absolute bottom-16  font-semibold player-name-card "
+           >
            </div>
            <div
              class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
@@ -517,13 +534,16 @@
            <div
            class="flex text-center flex-col  absolute top-14 right-5"
          >
-          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
-           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+          <button ><i class="iconeUpdate fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="btnDelete fa-solid fa-trash" style="color: #fe0101;"></i></button>
+     <button ><i class="iconeChangement fa-solid fa-repeat" style="color: #2900f5;"></i></button>    
          </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
-           
+           </div><div
+             class="hidden playerId absolute bottom-16  font-semibold player-name-card "
+           >
            </div>
            <div
              class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
@@ -584,13 +604,16 @@
            <div
            class="flex text-center flex-col  absolute top-14 right-5"
          >
-          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
-           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+          <button ><i class="iconeUpdate fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="btnDelete fa-solid fa-trash" style="color: #fe0101;"></i></button>
+     <button ><i class="iconeChangement fa-solid fa-repeat" style="color: #2900f5;"></i></button>    
          </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
-           
+           </div><div
+             class="hidden playerId absolute bottom-16  font-semibold player-name-card "
+           >
            </div>
            <div
              class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
@@ -651,13 +674,16 @@
            <div
            class="flex text-center flex-col  absolute top-14 right-5"
          >
-          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
-           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+          <button ><i class="iconeUpdate fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="btnDelete fa-solid fa-trash" style="color: #fe0101;"></i></button>
+     <button ><i class="iconeChangement fa-solid fa-repeat" style="color: #2900f5;"></i></button>    
          </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
-           
+           </div><div
+             class="hidden playerId absolute bottom-16  font-semibold player-name-card "
+           >
            </div>
            <div
              class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
@@ -718,13 +744,16 @@
            <div
            class="flex text-center flex-col  absolute top-14 right-5"
          >
-          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
-           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+          <button ><i class="iconeUpdate fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="btnDelete fa-solid fa-trash" style="color: #fe0101;"></i></button>
+     <button ><i class="iconeChangement fa-solid fa-repeat" style="color: #2900f5;"></i></button>    
          </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
-           
+           </div><div
+             class="hidden playerId absolute bottom-16  font-semibold player-name-card "
+           >
            </div>
            <div
              class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
@@ -785,13 +814,16 @@
            <div
            class="flex text-center flex-col  absolute top-14 right-5"
          >
-          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
-           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+          <button ><i class="iconeUpdate fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="btnDelete fa-solid fa-trash" style="color: #fe0101;"></i></button>
+     <button ><i class="iconeChangement fa-solid fa-repeat" style="color: #2900f5;"></i></button>    
          </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
-           
+           </div><div
+             class="hidden playerId absolute bottom-16  font-semibold player-name-card "
+           >
            </div>
            <div
              class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
@@ -852,13 +884,16 @@
            <div
            class="flex text-center flex-col  absolute top-14 right-5"
          >
-          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
-           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+          <button ><i class="iconeUpdate fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="btnDelete fa-solid fa-trash" style="color: #fe0101;"></i></button>
+     <button ><i class="iconeChangement fa-solid fa-repeat" style="color: #2900f5;"></i></button>    
          </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
-           
+           </div><div
+             class="hidden playerId absolute bottom-16  font-semibold player-name-card "
+           >
            </div>
            <div
              class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
@@ -919,13 +954,16 @@
            <div
            class="flex text-center flex-col  absolute top-14 right-5"
          >
-          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
-           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+          <button ><i class="iconeUpdate fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="btnDelete fa-solid fa-trash" style="color: #fe0101;"></i></button>
+     <button ><i class="iconeChangement fa-solid fa-repeat" style="color: #2900f5;"></i></button>    
          </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
-           
+           </div><div
+             class="hidden playerId absolute bottom-16  font-semibold player-name-card "
+           >
            </div>
            <div
              class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
@@ -986,13 +1024,16 @@
            <div
            class="flex text-center flex-col  absolute top-14 right-5"
          >
-          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
-           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+          <button ><i class="iconeUpdate fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="btnDelete fa-solid fa-trash" style="color: #fe0101;"></i></button>
+     <button ><i class="iconeChangement fa-solid fa-repeat" style="color: #2900f5;"></i></button>    
          </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
-           
+           </div><div
+             class="hidden playerId absolute bottom-16  font-semibold player-name-card "
+           >
            </div>
            <div
              class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
@@ -1053,13 +1094,16 @@
            <div
            class="flex text-center flex-col  absolute top-14 right-5"
          >
-          <button ><i class="fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
-           <button ><i class="fa-solid fa-trash" style="color: #fe0101;"></i></button>
+          <button ><i class="iconeUpdate fa-solid fa-pen-to-square" style="color: #0ca201;"></i></button>
+           <button ><i class="btnDelete fa-solid fa-trash" style="color: #fe0101;"></i></button>
+     <button ><i class="iconeChangement fa-solid fa-repeat" style="color: #2900f5;"></i></button>    
          </div> 
            <div
              class="name absolute bottom-16  font-semibold player-name-card "
            >
-           
+           </div><div
+             class="hidden playerId absolute bottom-16  font-semibold player-name-card "
+           >
            </div>
            <div
              class="flex flex-row gap-2 absolute bottom-10 left-5 font-semibold leading-3"
